@@ -1,0 +1,34 @@
+def generar_plantilla():
+    return [[1,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,2]]
+
+def crear_plantilla():
+    cuad1= 4*generar_plantilla()
+    cuad2= 4*generar_plantilla()
+    cuad3= 4*generar_plantilla()
+    cuad4= 4*generar_plantilla()
+    plantilla=[cuad1, cuad2, cuad3, cuad4]
+    return plantilla
+
+def imprimir_plantilla(p):
+    for i in [0]:
+        for j in range(16):
+            print("{}\t{}\t{}\t{}".format(p[i][j], p[i+1][j], p[i+2][j], p[i+3][j]))
+            if (j+1)%4==0:
+                print('\n')
+    
+def plantilla_modificada(p, n):
+    p[0][1][1]= n
+    return p
+def pedir_numero():
+    x= int(input('Ingrese un número del 0 al 15: '))
+    while(x>15 or x< 0):
+        x= int(input('Está fuera de rango. Intenta otra vez: '))
+    return x
+
+plantilla= crear_plantilla()
+N= pedir_numero()
+print('---------PRIMERA PLANTILLA----------\n')
+imprimir_plantilla(plantilla)
+print('\n---------SEGUNDA PLANTILLA----------\n')
+plantilla= plantilla_modificada(plantilla, N)
+imprimir_plantilla(plantilla)
